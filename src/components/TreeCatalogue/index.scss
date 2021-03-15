@@ -1,0 +1,114 @@
+.treenode{
+	width: calc(100% - 20px);
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+}
+.treenode_options_box{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  .next-icon{
+		cursor: pointer;
+		margin-right: 3px;
+  }
+}
+.switcher{
+  box-sizing: border-box;
+	fill: $catalogue_file_color!important;
+	cursor: pointer;
+	&:hover {
+		fill: $catalogue_primary_color!important;
+	}
+}
+.switcher_empty{
+	width: 20px;
+	height: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	.switcher_empty_point{
+		width: 6px;
+		height: 6px;
+		background: #d8d8d8;
+		border-radius: 50%;
+	}
+}
+.treenode_item{
+	width: 100%;
+  display: flex;
+  align-items: center;
+	justify-content: flex-start;
+	margin-bottom: 12px;
+	position: relative;
+}
+.treenode_options{
+	margin-left: 4px;
+	&:hover {
+		fill: $catalogue_primary_color!important;
+	}
+}
+.treenode_options_del{
+	fill: $catalogue_primary_color!important;
+	&:hover {
+		fill: $btn_delete_color !important;
+	}
+}
+.treenode-switcher-open{
+	transition: all 0.5s;
+	transform: rotate(90deg);
+}
+.treenode-switcher-close{
+	transition: all 0.5s;
+	transform: rotate(0deg);
+	// &:hover {
+	// 	-webkit-transform:rotate(-180deg);
+  //           transform:rotate(-180deg);
+  //           -webkit-transition:-webkit-transform 0.25s linear;
+  //           transition:transform 0.25s linear;
+	// }
+}
+.element_title{
+	width: auto;
+	position: fixed;
+	white-space: nowrap;
+	background-image: linear-gradient(#fff, #ececec);
+	padding: 3px 8px;
+	border-radius: 4px;
+	z-index: 3;
+	border: 1px solid #c4c3c3;
+	b{
+		font-weight: normal;
+	}
+}
+.tree_title{
+	color: #333;
+	height: 20px;
+	padding: 0px 4px;
+  box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	b{
+		// width: 100%;
+		font-size: 14px;
+		font-weight: 400;
+		color: #262626;
+		line-height: 20px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+}
+.node-selected{
+  background-color: $catalogue_selected_bgcolor;
+	border-radius: 4px;
+  .tree_title b{
+    color: #4679FF;
+  }
+}
+.myCls{
+  background-color: white;
+  border: none;
+}

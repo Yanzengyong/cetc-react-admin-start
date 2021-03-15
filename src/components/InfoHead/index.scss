@@ -1,0 +1,27 @@
+.info_head{
+	height: 52px;
+  border-bottom: 1px solid #eeeeee;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+	justify-content: space-between;
+	.breadcrumb_title{
+		font-size: 14px;
+		color: #8C8C8C;
+	}
+	.activated > .breadcrumb_title{
+		color: #262626;
+	}
+	.infoHead_back{
+		font-size: 18px;
+		color: #4679FF;
+		font-weight: 500;
+		&:hover{
+			font-weight: 600;
+		}
+		.infoHead_back_icon{
+			margin-right: 5px;
+			display: flex;
+		}
+	}
+}

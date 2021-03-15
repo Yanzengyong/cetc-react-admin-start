@@ -1,0 +1,20 @@
+.ellipsisBox {
+	display: inline-block;
+
+	// 单行
+	.ellipsis {
+		cursor: pointer;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		margin: 1px 0px;
+	}
+
+	// 多行
+	.ellipsis2 {
+		display: -webkit-box; //对象作为弹性伸缩盒子模型显示
+		-webkit-box-orient: vertical; //设置或检索伸缩盒对象的子元素的排列方式
+		-webkit-line-clamp: 2; //溢出省略的界限
+		overflow: hidden; //设置隐藏溢出元素
+	}
+}

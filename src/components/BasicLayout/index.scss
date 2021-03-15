@@ -1,0 +1,175 @@
+.basicLayout_container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  background: #ebeaea;
+  .basicLayout_left {
+    width: 270px;
+    height: 100%;
+    background: #fff;
+    .basicLayout_head {
+			width: 100%;
+			height: 48px;
+      padding: 20px 0;
+			border-bottom: 1px solid #eeeeee;
+			border-right: 1px solid #eeeeee;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      h1 {
+				font-size: 18px;
+				font-weight: 500;
+				color: #262626;
+				margin: 0;
+      }
+    }
+    .basicLayout_body {
+      height: calc(100% - 48px);
+			padding: 16px;
+			border-right: 1px solid #eeeeee;
+      box-sizing: border-box;
+      .basicLayout_search {
+        width: 100%;
+        .next-search-left {
+          height: 30px !important;
+        }
+        .next-after {
+          height: 30px !important;
+        }
+        .next-select {
+          height: 30px !important;
+        }
+        .next-search-btn {
+          height: 32px !important;
+        }
+        input {
+          height: 30px !important;
+        }
+        .basicLayout_search_btn {
+          font-size: 13px;
+        }
+      }
+
+      .basicLayout_tree_box {
+        padding-top: 15px;
+        box-sizing: border-box;
+        height: calc(100% - 32px);
+        overflow: hidden;
+        .next-tree-node-label-wrapper {
+          max-width: 83%;
+        }
+        .treenodeLabel {
+          overflow: hidden !important;
+          width: 100%;
+        }
+        .datasource_currentTree_box {
+          padding: 0 8px;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 5px;
+          a {
+            font-size: 12px;
+            color: $btn_delete_color;
+            cursor: pointer;
+            max-width: 90%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+          .iconStyle {
+            width: 10px;
+            height: 10px;
+            fill: $btn_delete_color;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+  .basicLayout_onlyright {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    padding: 0 36px;
+    box-sizing: border-box;
+    .basicLayout_head {
+      width: 100%;
+      padding: 20px 0;
+      border-bottom: 1px solid #e4e4e4;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      h1 {
+        font-size: 18px;
+        margin: 0;
+			}
+			.basicLayout_head_left{
+        box-sizing: border-box;
+			}
+      .basicLayout_head_right{
+        padding-right: 20px;
+        box-sizing: border-box;
+      }
+		}
+		.basicLayout_head_noMainPage{
+      width: 100%;
+      padding: 20px;
+      border-bottom: 1px solid #e4e4e4;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+		}
+    .basicLayout_body {
+      height: calc(100% - 77px);
+      padding: 20px 0 20px 0;
+      box-sizing: border-box;
+    }
+  }
+  .basicLayout_right {
+    width: calc(100% - 270px);
+    height: 100%;
+    background: #fff;
+    box-sizing: border-box;
+    .basicLayout_head {
+      width: 100%;
+			height: 48px;
+			padding: 0 32px;
+			border-bottom: 1px solid #eeeeee;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      h1 {
+				font-size: 18px;
+				margin: 0;
+			}
+			.basicLayout_head_left{
+        box-sizing: border-box;
+			}
+      .basicLayout_head_right{
+        box-sizing: border-box;
+      }
+		}
+		.basicLayout_head_noMainPage{
+      width: 100%;
+      padding: 20px;
+      border-bottom: 1px solid #e4e4e4;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+		}
+    .basicLayout_body {
+      height: calc(100% - 48px);
+      padding: 16px 32px 24px 32px;
+      box-sizing: border-box;
+    }
+  }
+}

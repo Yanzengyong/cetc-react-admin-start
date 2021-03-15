@@ -1,0 +1,18 @@
+
+
+.deleteInfo {
+  width: 350px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+	font-size: 14px;
+	word-break: break-all;
+	word-wrap: break-word;
+	white-space: pre-wrap;
+  .alertIcon {
+    width: 20px!important;
+    height: 20px!important;
+    fill: hsl(38, 100%, 50%)!important;
+    margin-right: 10px;
+  }
+}

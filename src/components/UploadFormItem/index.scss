@@ -1,0 +1,43 @@
+.uploadingFileList {
+  width: 49%;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #bfbfbf;
+  border-radius: 4px;
+  padding: 0 15px;
+  margin-bottom: 5px;
+}
+
+.uploadedItem_list_title {
+  display: flex;
+  align-items: center;
+}
+
+.upload_formItem_place{
+  width: 49%;
+  height: 150px;
+  border: 1px dashed #868686;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  cursor: pointer;
+  margin-bottom: 10px;
+  .upload_formItem_place_icon{
+    width: 30px!important;
+    height: 30px!important;
+    fill: #585858!important;
+  }
+  h6{
+    margin-top: 10px;
+    margin-bottom: 0;
+    font-size: 14px;
+  }
+  p{
+    margin-top: 3px;
+    line-height: normal;
+  }
+}

@@ -1,0 +1,44 @@
+.disable_Choice_Item_box{
+  cursor: no-drop;
+  h3{
+    color: #ccc;
+  }
+  p{
+    color: #ccc;
+  }
+}
+.Choice_Item_box{
+  padding: 20px 16px;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+  &:last-child{
+    border: none;
+  }
+  &:hover{
+    background: #97e4dd;
+    h3{
+      color: #fff;
+    }
+    p{
+      color: #fff;
+    }
+  }
+  h3{
+    margin: 0;
+    padding: 0;
+    font-size: 22px;
+    font-weight: 600;
+    color: #333;
+    width: 100%;
+    text-align: center;
+    line-height: 60px;
+  }
+  p{
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    color: #858282;
+    width: 100%;
+    text-align: center;
+  }
+}

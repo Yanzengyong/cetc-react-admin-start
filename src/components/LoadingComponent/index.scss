@@ -1,0 +1,32 @@
+.loading2{
+  width: 100%;
+  min-height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .circle{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 3px;
+    border-radius: 50%;
+    background-color: $general_primary_color;
+  }
+  .circle1{
+    animation: loading2Translate 1s linear 0s infinite alternate;
+  }
+  .circle2{
+    animation: loading2Translate 1s linear .4s infinite alternate;
+  }
+  .circle3{
+    animation: loading2Translate 1s linear .8s infinite alternate;
+  }
+  @keyframes loading2Translate {
+    from {
+      transform: scale(.2);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+}

@@ -1,0 +1,46 @@
+.itemPanel {
+  flex: 1;
+  background: #fafafa;
+  height: 100%;
+  .itemPanel_menuBox{
+    height: 100%;
+    overflow-y: auto;
+    border: none;
+  }
+  .next-card{
+    width: 100%;
+    height: 38px;
+    padding: 0;
+    margin-top: 3px;
+    border: none;
+    padding: 0 6px;
+    .next-card-body {
+      padding: 0;
+      text-align: center;
+      border: 2px solid #84ced6;
+      border-radius: 6px;
+      background-color: $btn_delete_color;
+      font-size: 16px;
+      height: 100%;
+      color: #fff;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .next-card-content{
+      height: 100%!important;
+      width: 100%;
+      div{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+    }
+  }
+}

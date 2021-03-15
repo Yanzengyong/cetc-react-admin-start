@@ -1,0 +1,8 @@
+{
+  "search.exclude": {
+    "**/bower_components": false
+  },
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true
+	},
+}

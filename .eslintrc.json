@@ -1,0 +1,60 @@
+{
+	"env": {
+		"node": true,
+		"commonjs": true,
+		"mocha": true,
+		"jest": true,
+		"es6": true,
+		"browser": true
+	},
+	"extends": [
+			"eslint:recommended",
+			"plugin:react/recommended",
+			"plugin:react-hooks/recommended"
+	],
+	"parserOptions": {
+		"ecmaFeatures": {
+			"experimentalObjectRestSpread": true,
+			"jsx": true
+		},
+		"sourceType": "module"
+	},
+	"plugins": ["react", "jsx-a11y", "react-hooks"],
+	"settings": {
+		"react": {
+			"pragma": "React",
+			"version": "detect"
+		}
+	},
+	"parser": "babel-eslint",
+	"rules": {
+		"quotes": ["error", "single"],
+		"semi": ["error", "never"],
+		"react/prop-types": 0,
+		"no-mixed-spaces-and-tabs": 0,
+		"space-before-blocks": 2,
+		"object-curly-spacing": [2, "always"],
+		"space-before-function-paren": [2, "always"],
+		"computed-property-spacing": 2,
+		"func-call-spacing": 2,
+		"space-in-parens": 2,
+		"comma-spacing": 2,
+		"array-bracket-spacing": 2,
+		"no-console": 0,
+		"no-multi-spaces": 2,
+		"block-spacing": 2,
+		"arrow-parens": 0,
+		"no-throw-literal": 0,
+		"react/display-name": 0,
+		"react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx"] }],
+		"react/jsx-key": 0,
+		"react/jsx-no-target-blank": [1, { "enforceDynamicLinks": "never" }],
+		"react/react-in-jsx-scope": 0,
+		"react-hooks/rules-of-hooks": "error", // 检查 Hook 的规则
+		"react-hooks/exhaustive-deps": "warn", // 检查 effect 的依赖
+		"jsx-a11y/anchor-is-valid": "off",
+		"no-useless-escape": 0,
+		"no-unused-vars": "warn",
+		"no-constant-condition": 0
+	}
+}

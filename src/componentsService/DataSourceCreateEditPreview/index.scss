@@ -1,0 +1,47 @@
+.datasource_connection_box{
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	.datasource_connectionStatus_box{
+		width: 100%;
+		height: 36px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0 20px;
+		span{
+			margin-left: 8px;
+			font-size: 14px;
+		}
+	}
+}
+
+.alert_message_box{
+	width: 100%;
+	height: 40px;
+	padding: 0 19px;
+	box-sizing: border-box;
+	background: #eff4ff;
+	border: 1px solid #c6d6ff;
+	border-radius: 2px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	margin: 16px 0;
+	.alert_message_text{
+		margin-left: 7px;
+		font-size: 14px;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		b{
+			color: #595959;
+			font-weight: 400;
+		}
+		i{
+			color: #4679FF;
+			margin: 0 4px;
+		}
+	}
+}
+

@@ -1,0 +1,27 @@
+.infoBlock_container{
+  width: 100%;
+  border: 1px solid #dedede;
+  margin-bottom: 20px;
+  .infoBlock_head{
+    width: 100%;
+    border-bottom: 1px solid #dedede;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    .infoBlock_iconStyle{
+      fill: #333;
+      margin-right: 8px;
+    }
+    span{
+      font-size: 14px;
+      color: #333;
+      font-weight: 600;
+    }
+  }
+  .infoBlock_body{
+    box-sizing: border-box;
+    padding: 15px 25px;
+  }
+}

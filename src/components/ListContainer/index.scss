@@ -1,0 +1,90 @@
+
+.listContainer{
+  width: 100%;
+  height: 100%;
+  .listContainer_utilbox{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .listContainer_utilbox_left{
+      width: 60%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    .listContainer_utilbox_right{
+      // width: 40%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+	}
+	.check_message_box{
+		width: 100%;
+		height: 40px;
+		padding: 0 19px;
+		box-sizing: border-box;
+		background: #eff4ff;
+		border: 1px solid #c6d6ff;
+		border-radius: 2px;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		margin: 16px 0;
+		.check_message_text{
+			margin-left: 7px;
+			font-size: 14px;
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+			b{
+				color: #595959;
+				font-weight: 400;
+			}
+			i{
+				color: #4679FF;
+				margin: 0 4px;
+			}
+		}
+	}
+  .listContainer_utilbox_notice{
+    margin: 16px 0;
+    height: 36px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+		justify-content: flex-start;
+		position: relative;
+    .next-message-title{
+      font-size: 14px!important;
+      padding: 0 10px!important;
+		}
+		.listContainer_utilbox_checkbox{
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			left: 20px;
+		}
+	}
+	.hascheckBoxStyle{
+		padding-left: 50px;
+	}
+  .listContainer_table_box{
+    width: 100%;
+    height: calc(100% - 36px - 32px - 40px);
+    position: relative;
+    .listContainer_table{
+      width: 100%;
+      height: calc(100% - 40px);
+      overflow: auto;
+    }
+    .listContainer_Pagination{
+      margin-top: 10px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+  }
+}

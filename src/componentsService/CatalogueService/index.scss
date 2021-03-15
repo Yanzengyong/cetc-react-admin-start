@@ -1,0 +1,124 @@
+.catalogue_container {
+  width: 100%;
+  height: 100%;
+  .catalogue_search {
+    width: 100%;
+    // .next-search-left {
+    //   height: 30px !important;
+    // }
+    // .next-after {
+    //   height: 30px !important;
+    // }
+    // .next-select {
+    //   height: 30px !important;
+    // }
+    // .next-search-btn {
+    //   height: 32px !important;
+    // }
+    // input {
+    //   height: 30px !important;
+    // }
+    .catalogue_search_btn {
+      font-size: 13px;
+    }
+  }
+
+  .catalogue_tree_box {
+    padding-top: 16px;
+    box-sizing: border-box;
+    height: calc(100% - 32px);
+    overflow: hidden;
+    .next-tree-node-label-wrapper {
+      max-width: 83%;
+    }
+    .treenodeLabel {
+      overflow: hidden !important;
+      width: 100%;
+    }
+    .catalogue_currentTree_box {
+			height: 28px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+			margin-bottom: 12px;
+			.catalogue_selected_tooltip{
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				height: 100%;
+				span{
+					display: inline-block;
+					font-size: 13px;
+					font-weight: 400;
+					color: #262626;
+					line-height: 20px;
+				}
+				b{
+					width: 168px;
+					height: 100%;
+					background: #eff4ff;
+					border-radius: 4px;
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
+					padding: 0 9px;
+					box-sizing: border-box;
+					.catalogue_selected_name{
+						width: 80%;
+						font-size: 14px;
+						font-weight: 500;
+						color: $catalogue_primary_color;
+						display: -webkit-box;
+						-webkit-box-orient: vertical;
+						-webkit-line-clamp: 1;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+					}
+					.iconStyle {
+						fill: $catalogue_primary_color;
+						cursor: pointer;
+						display: flex;
+						z-index: 6;
+						&:hover{
+							fill: $btn_delete_color !important;
+						}
+					}
+				}
+			}
+    }
+  }
+}
+.catalogue_tree_container{
+	width: 100%;
+	height: calc(100% - 21px);
+	overflow: scroll;
+	.catalogue_tree_addBtn_box{
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-bottom: 16px;
+		height: 28px;
+		background: rgba(70,121,255,0.04);
+		border: 1px dotted #4679ff;
+		border-radius: 4px;
+		box-sizing: border-box;
+		cursor: pointer;
+		b{
+			font-size: 14px;
+			font-weight: 400;
+			color: #4679ff;
+		}
+		.iconStyle_add{
+			fill: #4679ff;
+			margin-right: 11px;
+			display: flex;
+		}
+	}
+	.catalogue_tree{
+		width: 100%;
+	}
+}
+

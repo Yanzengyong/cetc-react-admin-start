@@ -1,0 +1,38 @@
+.contextMenu {
+  display: none;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+.item {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+  user-select: none;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  &:hover {
+    background: #9ccde4;
+    color: #fff;
+    .iconStyle{
+      fill: #fff;
+    }
+  }
+  i {
+    margin-right: 8px;
+  }
+  .iconStyle{
+    width: 20px;
+    height: 20px;
+    fill: #5a5858;
+    margin-right: 6px;
+  }
+  span{
+    line-height: normal;
+  }
+}
