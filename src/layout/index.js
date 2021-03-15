@@ -1,19 +1,11 @@
-/*
- * @Description:
- * @Version:
- * @Author: Yanzengyong
- * @Date: 2020-06-21 10:03:54
- * @LastEditors: Yanzengyong
- * @LastEditTime: 2021-03-03 16:24:22
- */
 import React from 'react'
-import { Link, withRouter } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Nav, Tab, Dropdown, Menu, Message, Select } from '@alifd/next'
 import MenuConfig from '@/menus'
 import { getQueryItemValue } from '@/utils/common'
 import { getLocalStorageItem, clearLocalStorage, removeSessionStorageItem, clearSessionStorage } from '@/utils/storage'
-import { DefaultMenu, expendSideMenusHandle, instantiationRouteDiv } from '@/utils/menuForRoute'
+import { DefaultMenu, expendSideMenusHandle, findCurrentRouteItem } from '@/utils/menuForRoute'
 import IconFont from '@/components/IconFont'
 import { Tab as TabAction, User as UserRedux } from '@/reduxActions'
 import { UserManageAction } from '@/actions'
@@ -46,7 +38,6 @@ class Layout extends React.Component {
 		sideNavOpenKeys: [], // 左侧菜单栏打开的openkeys
 		activeKey: '',
 		showSearchInput: false, // 是否展示search输入框
-		userName: '未登录', // 用户名称
 		selectValue: '数据服务系统',
 		selectList: [
 			{ systemName: '首页', systemUuid: '000' },
@@ -71,15 +62,14 @@ class Layout extends React.Component {
 
 	// 获取用户信息
 	userInit = async () => {
-
 		const TOKEN = getQueryItemValue(this.props.location.search, 'token')
-		if (!TOKEN) {
-			const _UserInfo = getLocalStorageItem('UserInfo') ?? {}
 
+		if (!TOKEN) { // 地址中不存在token
+			const _UserInfo = getLocalStorageItem('UserInfo') ?? {}
 			// 没有用户token
 			if (!_UserInfo) {
 				// 没有用户信息
-				// window.location.href = LOGIN_URL
+				window.location.href = LOGIN_URL
 			}
 			if (_UserInfo && Object.keys(this.props.user.userInfo).length === 0) {
 				// 本地有用户信息，但store中没有用户信息
@@ -88,7 +78,7 @@ class Layout extends React.Component {
 			return
 		}
 
-		let response = await getUserInfo({ token: TOKEN }, {
+		const response = await getUserInfo({ token: TOKEN }, {
 			headers: {
 				'TOKEN': TOKEN
 			}
@@ -101,13 +91,10 @@ class Layout extends React.Component {
 				token: TOKEN
 			})
 			this.setState({
-				userName: response.result.name,
 				selectList: this.getSystemList(response.result.roleList)
 			})
-		}
-		else {
+		} else {
 			Message.error(response && response.errorMsg || '获取用户信息失败！')
-			// window.location.href = LOGIN_URL
 		}
 	}
 
@@ -181,7 +168,7 @@ class Layout extends React.Component {
 		const currentTab =
 			route.pathname === '/'
 				? DefaultMenu
-				: this.findCurrentRouteItem(route.pathname) ?? NotFound
+				: findCurrentRouteItem(MenuConfig, route.pathname) ?? NotFound
 		const { tabs } = this.props.state
 
 		const NoNotFoundTab = tabs.filter(
@@ -215,17 +202,6 @@ class Layout extends React.Component {
 		this.setState({
 			activeKey: avtiveRoutePath,
 		})
-	}
-
-	// 获取当前的菜单对象
-	findCurrentRouteItem = (path, title) => {
-		const routeList = instantiationRouteDiv(MenuConfig)
-		const currentPath = path
-		const currentTitle = title
-
-		return routeList.find(
-			(item) => item.path === currentPath || item.title === currentTitle
-		)
 	}
 
 	// 获取需要展开的nav菜单
@@ -268,7 +244,7 @@ class Layout extends React.Component {
 			: currentPathInfo.path
 
 		const sideNavOpenKeys = this.getSubMenuOpenKeys(currentPathInfo)
-
+		console.log(currentSideMenu)
 		this.setState({
 			MainNavselectedKeys: currentMainSelectKeys,
 			sideMenu: currentSideMenu,
@@ -341,6 +317,7 @@ class Layout extends React.Component {
 	// 渲染侧边菜单的函数
 	renderNavHandle = (menu) =>
 		menu.map((menuItem) => {
+			console.log(menuItem)
 			const UserInfo = getLocalStorageItem('UserInfo') ?? {}
 
 			// 复用逻辑
@@ -623,7 +600,6 @@ class Layout extends React.Component {
 			y,
 			x,
 			switchSystemVisible,
-			userName,
 			selectValue,
 			selectList
 		} = this.state
@@ -688,7 +664,7 @@ class Layout extends React.Component {
 										<div className="avatar_img">
 											<img src="assets/images/user.png" alt="头像"/>
 										</div>
-										<div className="avatar_name">{UserInfo.name}</div>
+										<div className="avatar_name">{UserInfo.name || '未登陆'}</div>
 									</div>
 								}
 								triggerType="hover"

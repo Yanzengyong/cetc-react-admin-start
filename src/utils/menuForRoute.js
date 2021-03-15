@@ -118,7 +118,12 @@ const getBreadcrumbData = (currentPathInfo) => {
 	return breadcrumbList
 }
 
-// 获取当前的菜单对象
+/**
+ * @name: 根据菜单标题或者菜单地址，直接获取菜单对象
+ * @param {String} path 在menu中记录的菜单地址
+ * @param {String} title 在menu中记录的菜单标题
+ * @return {*}
+ */
 const findCurrentRouteItem = (MenuConfig, path, title) => {
 	const routeList = instantiationRouteDiv(MenuConfig)
 	const currentPath = path
@@ -128,16 +133,6 @@ const findCurrentRouteItem = (MenuConfig, path, title) => {
 	)
 }
 
-/**
- * @name: 根据菜单标题，直接获取菜单对象
- * @param {String} title 在menu中记录的菜单标题
- * @return {*}
- */
-const findSpecRouteItem = (MenuConfig, title) => {
-	const routeList = instantiationRouteDiv(MenuConfig)
-	const specRouteItem = routeList.find(item => item.title === title)
-	return specRouteItem ?? {}
-}
 
 export {
 	DefaultMenu,
@@ -145,6 +140,5 @@ export {
 	expendSideMenusHandle,
 	instantiationRouteDiv,
 	getBreadcrumbData,
-	findCurrentRouteItem,
-	findSpecRouteItem
+	findCurrentRouteItem
 }

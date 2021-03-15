@@ -1,6 +1,6 @@
 import warning from 'rc-util/lib/warning'
 import store from '@/store'
-import { findSpecRouteItem } from '@/utils/menuForRoute'
+import { findCurrentRouteItem } from '@/utils/menuForRoute'
 import { Message, Notification } from '@alifd/next'
 import DeleteNotice from '@/components/DeleteNotice'
 import MenuConfig from '@/menus'
@@ -53,7 +53,7 @@ const storageCurrentPage = (props, pageNum) => {
  * @template jumpToPage(this.props, '查看业务', queryParam, true)
  */
 const jumpToPage = async (props, routeName, queryParam, closeTab, pageNum) => {
-	const JobPage = findSpecRouteItem(MenuConfig, routeName)
+	const JobPage = findCurrentRouteItem(MenuConfig, null, routeName)
 	let queryStr = ''
 	if (queryParam && queryParam.length && queryParam.length > 0) {
 		queryParam.map(item => {

@@ -24,3 +24,4 @@ const Menu = [
 const _enhancerMenu = enhancerMenu(Menu)
 
 export default _enhancerMenu
+export { Menu as originMenu }

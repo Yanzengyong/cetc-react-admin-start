@@ -16,6 +16,7 @@ import {
 	jumpToPage,
 	getQueryItemValue
 } from '@/utils/common'
+import MenuConfig from '@/menus'
 import { findCurrentRouteItem } from '@/utils/menuForRoute'
 import { connect } from 'react-redux'
 import { Tab } from '@/reduxActions'
@@ -63,7 +64,7 @@ class JobCreateAndEditService extends React.Component {
 	}
 
 	static getDerivedStateFromProps (props) {
-		const Item = findCurrentRouteItem(props.location.pathname)
+		const Item = findCurrentRouteItem(MenuConfig, props.location.pathname)
 		return {
 			pageType: Item.type
 		}

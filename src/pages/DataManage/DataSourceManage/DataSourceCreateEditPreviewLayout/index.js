@@ -8,6 +8,7 @@ import React from 'react'
 import InfoLayout from '@/components/InfoLayout'
 import DataSourceCreateEditPreview from '@/componentsService/DataSourceCreateEditPreview'
 import { findCurrentRouteItem } from '@/utils/menuForRoute'
+import MenuConfig from '@/menus'
 import { getQueryItemValue, jumpToPage } from '@/utils/common'
 import { connect } from 'react-redux'
 import { Tab } from '@/reduxActions'
@@ -35,7 +36,7 @@ class DataSourceCreateEditPreviewLayout extends React.Component {
 	static getDerivedStateFromProps (props, state) {
 		const currentUuid = props.location.search
 		const prevUuid = state.initFieldUuid
-		const Item = findCurrentRouteItem(props.location.pathname)
+		const Item = findCurrentRouteItem(MenuConfig, props.location.pathname)
 		const dataSourceType = getQueryItemValue(props.location.search, 'type')
 		const dataSourceUuid = getQueryItemValue(props.location.search, 'uuid')
 		// 增加一层判断创建时，pageType不同
