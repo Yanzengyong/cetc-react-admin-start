@@ -4,7 +4,7 @@
  * @Author: Yanzengyong
  * @Date: 2020-09-15 18:07:31
  * @LastEditors: Yanzengyong
- * @LastEditTime: 2021-03-03 15:51:05
+ * @LastEditTime: 2021-03-16 17:44:27
  */
 import DataManage from './DataManage'
 import { enhancerMenu } from '@/utils/menuForRoute'
@@ -24,4 +24,3 @@ const Menu = [
 const _enhancerMenu = enhancerMenu(Menu)
 
 export default _enhancerMenu
-export { Menu as originMenu }

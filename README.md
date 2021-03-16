@@ -1,10 +1,10 @@
-# 数据治理平台
+# React后台管理项目模板
 
 ## 前言
 
 > 项目构建是基于create-react-app进行构建的，自定义配置使用了config-overrides，详细配置方法可在网上搜索查找；需要注意的是：**项目开发前，务必详细阅读本文档以及[前端开发规范](./specification/index.md)**
 
-### 项目启动
+## 项目启动
 
 ```js
 yarn start
@@ -14,7 +14,7 @@ or
 npm run start
 ```
 
-### 项目打包
+## 项目打包
 
 ```js
 yarn build
@@ -24,7 +24,35 @@ or
 npm run build
 ```
 
+## 基础篇
 
+> 模板中包含两种模板
+
+1.项目工程部不包含登录（login）页面，用户从其他地方跳转到该项目（页面）；
+
+2.项目工程包含登录（login）页面，用户在使用该项目时需登录后使用；
+
+### 使用方式：
+
+1.使用不包含login的时候，无需做任何修改。删除/src/layout/spare.js、/src/routes/spare.js、/src/pages/Login即可
+
+2.使用包含login的时候，将/src/layout/spare.js、/src/routes/spare.js中的spare.js改成index.js并且删除原index.js文件即可
+
+---
+
+## 路由篇
+
+## 菜单篇
+
+## 组件篇
+
+## 页面篇
+
+## 工具类篇
+
+## redux篇
+
+## 数据请求篇
 ### 关于路由、菜单的设置
 >菜单可以在前端自定义写好，也可以通过后端获取渲染，菜单中需要设置所有页面的路由地址及对应的component
 
