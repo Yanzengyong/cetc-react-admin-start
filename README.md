@@ -6,228 +6,282 @@
 
 ## 项目启动
 
-```js
+```sh
 yarn start
 
-or
+# or
 
 npm run start
 ```
 
 ## 项目打包
 
-```js
+```sh
 yarn build
 
-or
+# or
 
 npm run build
 ```
 
 ## 基础篇
 
-> 模板中包含两种模板
+> 模板中包含两种使用场景
 
-1.项目工程部不包含登录（login）页面，用户从其他地方跳转到该项目（页面）；
+### 1.【场景1】项目工程不包含登录（login）页面，用户从其他地方跳转到该项目（页面）；
 
-2.项目工程包含登录（login）页面，用户在使用该项目时需登录后使用；
+使用：
 
-### 使用方式：
+* 删除src/layout/spare.js
+* 删除src/routes/spare.js
+* 删除src/pages/Login
 
-1.使用不包含login的时候，无需做任何修改。删除/src/layout/spare.js、/src/routes/spare.js、/src/pages/Login即可
+---
 
-2.使用包含login的时候，将/src/layout/spare.js、/src/routes/spare.js中的spare.js改成index.js并且删除原index.js文件即可
+### 2.【场景2】项目工程包含登录（login）页面，用户需在项目中的登陆页登陆后才可以访问其他页面；
+
+使用：
+
+* 将src/layout/spare.js中的spare.js改成index.js并且删除原index.js文件
+* 将src/routes/spare.js中的spare.js改成index.js并且删除原index.js文件
+
+---
+
+### 包含生命周期的组件
+
+* 强制要求在组件卸载的生命周期中为setState置空，即清除网络状态
+
+  ```js
+  componentWillUnmount () {
+    this.setState = () => {
+      return
+    }
+  }
+  ```
+
+---
+
+### 页面组件的引用
+
+* 建议使用按需引入的方式引入
+
+  ```jsx
+  import AsyncComponent from '@/utils/asyncComponent'
+  
+  const MainPage = AsyncComponent(() => import('@/pages/Main'))
+  
+  export default {
+  	MainPage, // 首页
+  }
+  ```
 
 ---
 
 ## 路由篇
 
+> 路由格式：/平台名称/菜单名称/功能名称 【或】 /平台名称/父级菜单名称/菜单名称/功能名称
+>
+> 注：需要注意的是配置DefaultMenu时，path格式为/pure(或layoutname)/*；但是配置菜单时无需加pure或者layoutname前缀，因为会有enhancerMenu函数帮你自动加上
+
+### 1.【场景1】项目工程不包含登录（login）页面，用户从其他地方跳转到该项目（页面）；
+
+* 配置默认路由，打开“src/utils/menuForRoute.js”，配置DefaultMenu对象，**path属性为访问地址是“/”时重定向的新地址（注：路由地址必须是“/pure”或者“/layoutname”作为开头，pure为无layout的页面，layoutname为当前页面使用的layout名称）**；
+* 关于路由权限的配置，可根据实际后端返回的数据情况修改src/routes/index.js中AuthRouteComponentHandle函数的role判断；
+
+---
+
+### 2.【场景2】项目工程包含登录（login）页面，用户需在项目中的登陆页登陆后才可以访问其他页面；
+
+* 配置默认路由，打开“src/utils/menuForRoute.js”，配置DefaultMenu对象，**path属性为访问地址是“/”时重定向的新地址（注：路由地址必须是“/pure”或者“/layoutname”作为开头，pure为无layout的页面，layoutname为当前页面使用的layout名称）**；
+
+* 关于路由权限的配置，可根据实际后端返回的数据情况修改src/routes/index.js中AuthRouteComponentHandle函数的role判断；
+
+* 添加无需登陆即可访问的页面的路由，例如：打开src/routes/index.js，引用登陆页面在Routes类中使用：
+
+  ```jsx
+  import Login from '@/pages/Login'
+  
+  @withRouter
+  class Routes extends React.Component {
+  	render () {
+  		return (
+  			<Switch>
+  				<Route path='/login' component={Login}/>
+  				{
+  					......
+  				}
+  				<Redirect from='/' exact to={DefaultMenu.path} />
+  				<Route component={NotFound}/>
+  			</Switch>
+  		)
+  	}
+  }
+  ```
+
+
+---
+
 ## 菜单篇
 
-## 组件篇
-
-## 页面篇
-
-## 工具类篇
-
-## redux篇
-
-## 数据请求篇
-### 关于路由、菜单的设置
->菜单可以在前端自定义写好，也可以通过后端获取渲染，菜单中需要设置所有页面的路由地址及对应的component
-
-> 路由格式：/平台名称/菜单名称/功能名称 【或】 /平台名称/父级菜单名称/菜单名称/功能名称；
-
-**【备注】设置路由 ‘/’ 重定向请在src/layout/index.js中设置:**
-
-```js
-// src/layout/index.js
-
-const DefaultMenu = {
-	title: '首页',
-	path: '/dataManage/main',
-	exact: true,
-	component: 'DataManageMain',
-}
-```
-
-* 菜单统一管理在menus文件夹中；
+> 菜单可以在前端自定义写好，也可以通过后端获取渲染，菜单中需要设置所有页面的路由地址及对应的component
 
 #### 菜单配置的参数说明
 
-| 参数名称    | 参数描述                                                   | 参数类型 | 默认值 |
-| ----------- | ---------------------------------------------------------- | -------- | ------ |
-| title       | 菜单/平台名称                                              | Sring    | ''     |
-| path        | 菜单/平台对应路由                                          | Sring    | ''     |
-| defaultPath | 平台的默认的菜单路由（平台首页）                           | Sring    | ''     |
-| sideMenu    | 平台的默认的菜单数组对象                                   | Array    | []     |
-| exact       | 路由地址是否为精确匹配                                     | Boolean  | false  |
-| isHide      | 是否隐藏该路由菜单 <br/> 若需要隐藏，则设置isHide: 'Y'     | String   | -      |
-| isSub      	| 是否为submenu <br/> 设置值为true，可以下拉该菜单，此时不需要写component和exact     | Boolean   | -      |
-| component   | 该路径下对应的组件名称，没有则不写                         | String   | -      |
-| children    | 该路径下的子集，没有则不写                                 | Array    | []     |
-| type        | 新建/编辑/查看路由下，需增加类型属性，指明跳转至该类型页面 | String   | -      |
+| 参数名称    | 参数描述                                                     | 参数类型 | 默认值 |
+| ----------- | :----------------------------------------------------------- | -------- | ------ |
+| title       | 菜单/平台名称                                                | Sring    | ''     |
+| icon        | 菜单图标                                                     | Sring    | ''     |
+| path        | 菜单/平台对应路由                                            | Sring    | ''     |
+| defaultPath | 平台的默认的菜单路由（平台默认页）                           | Sring    | ''     |
+| sideMenu    | 平台的菜单数组对象                                           | Array    | []     |
+| layout      | 平台的layout组件名称（也是路由篇中的layoutname）             | Sring    | ''     |
+| subLink     | 不可下拉的菜单是否可以进行跳转                               | Boolean  | -      |
+| isSub       | 是否为submenu，设置值为true，可以下拉该菜单，此时不需要写component和exact | Boolean  | -      |
+| exact       | 路由地址是否为精确匹配                                       | Boolean  | false  |
+| role        | 该菜单（路由）可以的鉴权，例：['sys_admin', 'service_admin', 'service_operator'] | Array    | -      |
+| isHide      | 是否隐藏该路由菜单， 若需要隐藏，则设置isHide: 'Y'           | String   | -      |
+| component   | 该路径下对应的组件名称，没有则不写                           | String   | -      |
+| children    | 该路径下的子集，没有则不写                                   | Array    | []     |
+| type        | 新建/编辑/查看路由下，需增加类型属性，指明跳转至该类型页面   | String   | -      |
 
-**type配置例子，共三步**
-步骤1、在对应的菜单下面新增路由type
+---
+
+### 1.【场景1】项目工程不包含登录（login）页面，用户从其他地方跳转到该项目（页面）；
+
+* 在src/pagesConfig/index.js引入layout组件及平台文件（**layout组件导出名称应与菜单中配置的layout名称一致**）；
+* 在src/pagesConfig/platform_name.js中引入使用到的页面组件并导出（**页面组件导出名称应与菜单中配置的component名称一致**）；
+
+---
+
+### 2.【场景2】项目工程包含登录（login）页面，用户需在项目中的登陆页登陆后才可以访问其他页面；
+
+* 在src/pagesConfig/index.js引入layout组件及平台文件（**layout组件导出名称应与菜单中配置的layout名称一致**）；
+* 在src/pagesConfig/platform_name.js中引入使用到的页面组件并导出（**页面组件导出名称应与菜单中配置的component名称一致**）；
+
+---
+
+## 组件篇
+
+* 基础组件写在components文件夹中，以文件夹为组件单位，文件夹首字母大写；
+* 服务组件（包含请求等可整体复用的组件或页面）写在componentsService文件夹中，以文件夹为服务组件单位，文件夹首字母大写；
+
+---
+
+## 页面篇
+
+* 页面写在pages文件夹中，以文件夹为页面单位，文件夹首字母大写，文件夹层级对应实际的页面层级；
+
+---
+
+## 工具类篇
+
+---
+
+## redux篇
+
+---
+
+## 数据请求篇
+
+> 基础请求地址（requestBaseUrl）等在public/ipConfig.js中配置并导出，同时需要在src/api/index.js引入ipConfig.js并再次导出
+>
+> 注：这么做的目的是为了ipConfig.js不会被webpack编译，而是直接将ipConfig.js输出到打包文件夹中引用，这么做的好处是可以一次打包多次使用（同一版本的打包文件只需修改ipConfig即可满足不同请求需求的部署）
+
+### 关于ipConfig文件说明
+
+* 常量约定全部大写，“_”区分间隔；
+* 若配置时需要用到变量，如“window.location.host”，可以写成```const Host = 'http://${window.location.host}/api/'```，变量部分用${}包裹既可以。**注：无需用es6中的字符串模版“ ` ` ”，写成字符串即可**；
+
+### 关于api文件夹说明
+
+* 建立index.js文件，引用ipConfig文件并导出；
+* index.js下定义的常量约定全部大写，“_”区分间隔；
+* 在api文件夹下以功能（菜单）为单位新建文件，首字母大写；
+* 文件夹下的文件名称首字母大写；
+
+例子：
+
 ```js
-children: [
-	{
-		title: '新建业务',
-		path: '/dataManage/businessManage/create',
-		exact: true,
-		component: 'BusinessCreateAndEdit',
-		isHide: 'Y',
-		type: 'create'
-	},
+/* public/ipConfig.js **/
+
+const Host = 'http://${window.location.host}/api/'
+// const Host = 'http://10.1.119.26:50200/'
+
+const LOGIN_URL = 'http://172.16.117.172/systemlogin/#/login' // 登录页
+
+exports.Host = Host
+exports.LOGIN_URL = LOGIN_URL
 ```
+
 ```js
-import React from 'react'
-import InfoLayout from '@/components/InfoLayout'
-import BusinessCreateAndEditService from '@/componentsService/BusinessCreateAndEditService'
-// 步骤2、引入
-import { findCurrentRouteItem } from '@/utils/menuForRoute'
-import './index.scss'
+/* src/api/index.js **/
 
-export default class BusinessCreateAndEdit extends React.Component {
+const Config = require('IpConfig')
 
-	state = {
-		pageType: 'create',
-		initFieldUuid: ''
-	}
+let Host = Config.Host
 
-	componentDidMount () {
-		//步骤3、使用
-		const Item = findCurrentRouteItem(this.props.location.pathname)
-		this.setState({ pageType: Item && Item.type ? Item.type: 'create' })
-	}
+if (Config.Host.indexOf('window.location.host') !== -1) {
+	const header = Config.Host.split('$')[0]
+	const footer = Config.Host.split('}')[1]
+	Host = header + window.location.host + footer
+}
 
-	render () {
-		return (
-			<InfoLayout>
-				<BusinessCreateAndEditService
-					pageType={this.state.pageType}
-					initFieldUuid={this.state.initFieldUuid}
-					onCancel={() => { this.props.history.go(-1) }}
-				/>
-			</InfoLayout>
-		)
+const LOGIN_URL = Config.LOGIN_URL
+
+export { Host, LOGIN_URL }
+```
+
+---
+
+### 关于接口的请求
+
+* 在actions文件夹下以功能（菜单）为单位新建文件，与api文件统一；
+* BaseUrl统一引用api文件夹下的index.js内容；
+* 提示都在屏幕上方显示；
+* 提示不加遮罩层，不加关闭按钮，显示时长用默认（3s）无需设置；
+* 统一文件名称首字母大写；
+
+请求例子：
+
+```js
+import api from '@/api/Test' // 引用baseurl地址
+import request from '@/services' // 引用请求
+import { Message } from '@alifd/next' // 引用提示组件
+
+async getDispatchListRQ (params) {
+	try {
+		const result = await request.get(api.getDispatchList, params)
+		return result
+	} catch (error) {
+	   if (error && error.code === 'ECONNABORTED' && error.message.indexOf('timeout') !== -1) {
+			Message.error('请求超时，请检查网络')
+		} else {
+			Message.error('服务器未知异常，请联系管理员')
+		}
 	}
 }
 
-```
-
-* src/menus/index.js为大平台的导航配置（即头部的导航栏）；
-
-```js
-import DataManage from './DataManage'
-
-const Menu = [
-	{
-		title: '数据管理平台',
-		path: '/dataManage',
-		defaultPath: '/dataManage/main',
-		sideMenu: DataManage
-	}
-]
-
-export default Menu
-```
-
-* src/menus/Xxx.js为各个平台的菜单配置（即左侧的菜单），注意首字母需要大写； 
-
-```js
-
-export default [
-	{
-		title: '首页',
-		path: '/dataManage/main',
-		exact: true,
-		component: 'DataManageMain',
-	},
-	{
-		title: '业务管理',
-		path: '/dataManage/businessManage',
-		exact: true,
-		component: 'BusinessManage',
-		children: [
-			{
-				title: '新建业务',
-				path: '/dataManage/businessManage/create',
-				exact: true,
-				component: 'BusinessCreateAndEdit',
-				isHide: 'Y'
-			}
-		]
-	},
-	{
-		title: '数据源管理',
-		path: '/dataManage/dataSource',
-		exact: true,
-		component: 'DataManage',
-		children: [
-			{
-				title: '新增数据源',
-				path: '/dataManage/dataSource/create',
-				exact: true,
-				component: 'DataSourceAddEditLayout',
-				isHide: 'Y'
-			}
-		]
-	}
-]
-```
-
-* 所有地址对应的component需要在pagesConfig中引入；
-
-* src/pageConfig/index.js为所有平台component的集合； 
-
-```js
-import DataManage from './dataManage'
-
-export default {
-	...DataManage
-}
-```
-
-* src/pageConfig/Xxx.js为xxx平台component的引入； 
-
-```js
-import AsyncComponent from '@/utils/asyncComponent'
-
-const DataManageMain = AsyncComponent(() => import('@/pages/DataManage/Main'))
-const DataManage = AsyncComponent(() => import('@/pages/DataManage/DataSourceManage'))
-const BusinessManage = AsyncComponent(() => import('@/pages/DataManage/BusinessManage'))
-
-export default {
-	DataManageMain, // 首页
-	BusinessManage, // 业务管理
-	DataManage, // 数据源管理
+// 调用时
+getInfo = async () => {
+  const response = await getDispatchListRQ({
+    uuid: this.state.uuid
+  })
+  if (response) { // 注意：此处一定要先做response的判断，不能写在一行，目的是为code不等于1000后的else做提示语的保证
+    if (response.code === 10000) {
+    // 当code为成功的时候
+    } else {
+      // 否则提示后端返回的提示语
+      Message.error(response.msg || 'xx失败！')
+    }
+  }
 }
 
+/*
+注：所有的提示都在屏幕上方显示（好处不会被遮蔽，统一提示风格），不加遮罩层，不加关闭按钮，显示时长用默认（3s）无需设置
+**/
 ```
 
-* 菜单配置文件如果存在子集菜单的情况（如：【数据工场开发】展开后，包含了【项目开发管理】、【任务调度管理】两个选项），父级菜单（【数据工场开发】）的path设置为```/平台名称/factory```，子集菜单（【项目开发管理】）的path设置为```/平台名称/factory/dev```
+---
 
 ### 关于Tab栏的注意事项
 
@@ -287,77 +341,5 @@ componentWillUnmount () {
 }
 ```
 
-### 关于包含生命周期的组件
-* 强制要求在组件卸载的生命周期中为setState置空，即清除网络状态
 
-```js
-componentWillUnmount () {
-  this.setState = () => {
-    return
-  }
-}
-```
-
-### 关于api地址设置
-* 建立index.js文件，存储设置基础路径（BaseUrl）等通用地址；
-* 在api文件夹下以功能（菜单）为单位新建文件；
-* index.js下定义的常量约定全部大写，“_”区分间隔
-* 统一文件名称首字母大写
-* 首行添加yapi地址，目的方便查看请求参数和返回结果
-
-例子：
-```js
-/* api/index.js **/
-
-const HOST ='http://172.16.119.13/kyw/dcy-dev/' 
-const LOGIN_URL = 'http://www.baidu.com'
-
-```
-
-### 关于接口的请求
-* 在actions文件夹下以功能（菜单）为单位新建文件，与api文件统一；
-* BaseUrl统一引用api文件夹下的index.js内容；
-* 提示都在屏幕上方显示；
-* 提示不加遮罩层，不加关闭按钮，显示时长用默认（3s）无需设置；
-*  统一文件名称首字母大写；
-
-请求例子：
-```js
-
-import api from '@/api/test' // 引用baseurl地址
-import request from '@/services' // 引用请求
-import { Message } from '@alifd/next' // 引用提示组件
-
-async getDispatchListRQ (params) {
-	try {
-		const result = await request.get(api.getDispatchList, params)
-		return result
-	} catch (error) {
-	   if (error && error.code === 'ECONNABORTED' && error.message.indexOf('timeout') !== -1) {
-			Message.error('请求超时，请检查网络')
-		} else {
-			Message.error('服务器未知异常，请联系管理员')
-		}
-	}
-}
-
-// 调用时
-getInfo = async () => {
-  const response = await getDispatchListRQ({
-    uuid: this.state.uuid
-  })
-  if (response) { // 注意：此处一定要先做response的判断，不能写在一行，目的是为code不等于1000后的else做提示语的保证
-    if (response.code === 10000) {
-    // 当code为成功的时候
-    } else {
-      // 否则提示后端返回的提示语
-      Message.error(response.msg || 'xx失败！')
-    }
-  }
-}
-
-/*
-注：所有的提示都在屏幕上方显示（好处不会被遮蔽，统一提示风格），不加遮罩层，不加关闭按钮，显示时长用默认（3s）无需设置
-**/
-```
 

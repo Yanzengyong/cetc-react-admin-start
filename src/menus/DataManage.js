@@ -21,7 +21,6 @@ export default [
 		title: '数据源管理',
 		path: '/dataManage/dataSource',
 		isSub: true,
-		exact: true,
 		role: ['sys_admin', 'service_admin'],
 		icon: 'iconsever-fill',
 		children: [
@@ -60,7 +59,7 @@ export default [
 						type: 'preview',
 					}
 				]
-			},
+			}
 		]
 	}
 
