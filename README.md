@@ -250,25 +250,27 @@ npm run build
 
 * src/utils/validationFn.js
 
-  * NoSpace, //不能输入空格
-  * NoChinese, //不能输入中文
-  * Port, //请输入正确的端口号
-  * IpAddress, // 请输入正确的IP地址
-  * NumEng, //名称只允许数字英文下划线
-  * Eng_, //只允许输入数字下划线
-  * NumChineseEnglish, //只允许输入中文、英文、数字但不包括下划线等符号
-  * Email, //请输入正确的email地址
-  * OnlyCode, //只允许输入字符
-  * Url, //url验证
-  * ZeroToThousand, //1~1000的整数
-  * NegAndPos, //只能包含正负整数
-  * onlyChinese, // 只能输入中文、数字、下划线
-  * NoCommaQuota, // 不可输入英文单双引号、英文逗号
-  * NoNumChinese, //只能输入英文、特殊字符 
+  * NoSpace：不能输入空格
+  * NoChinese：不能输入中文
+  * Port：请输入正确的端口号
+  * IpAddress：请输入正确的IP地址
+  * NumEng：名称只允许数字英文下划线
+  * Eng_：只允许输入数字下划线
+  * NumChineseEnglish：只允许输入中文、英文、数字但不包括下划线等符号
+  * Email：请输入正确的email地址
+  * OnlyCode：只允许输入字符
+  * Url：url验证
+  * ZeroToThousand：1~1000的整数
+  * NegAndPos：只能包含正负整数
+  * onlyChinese：只能输入中文、数字、下划线
+  * NoCommaQuota：不可输入英文单双引号、英文逗号
+  * NoNumChinese：只能输入英文、特殊字符 
 
 ---
 
 ## redux篇
+
+> 本模版tab页签功能强制使用redux，用户信息强烈建议使用redux。其他地方是否使用完全根据使用者意愿。
 
 ---
 
