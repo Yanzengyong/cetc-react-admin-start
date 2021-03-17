@@ -12,10 +12,8 @@ import IconFont from '@/components/IconFont'
 import SimpleTag from '@/components/SimpleTag'
 import { Tag } from '@alifd/next'
 import moment from 'moment'
-import colorStyle from '@/themeStyle/themeStyle.scss'
+import colorStyle from '@/themeStyle/index.scss'
 import './index.scss'
-import { NoNumChinese } from 'utils/validationFn'
-// const Tooltip = Balloon.Tooltip
 class ListCard extends React.Component {
 
 	state = {
@@ -51,7 +49,7 @@ class ListCard extends React.Component {
 			loadingUuids,
 			simpleTag,
 			tags,
-			balloonNode
+			// balloonNode
 		} = this.props
 
 		const setContentMarginStyle = () => {
@@ -71,7 +69,7 @@ class ListCard extends React.Component {
 		}
 
 		// 简单标签的渲染
-		const simpleTagHandle = (name, useBalloon) => {
+		const simpleTagHandle = (name) => {
 			return <SimpleTag style={{ marginLeft: 8, maxWidth: 100 }} key={name} name={name}/>
 		}
 

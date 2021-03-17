@@ -8,7 +8,7 @@ import React from 'react'
 import { Card, Menu } from '@alifd/next'
 import { ItemPanel, Item as ItemNew } from 'gg-editor'
 import './index.scss'
-import colorStyle from '@/themeStyle/themeStyle.scss'
+import colorStyle from '@/themeStyle/index.scss'
 
 const { SubMenu } = Menu
 class FlowItemPanel extends React.Component {

@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Search, Pagination, Checkbox } from '@alifd/next'
 import './index.scss'
 import PropTypes from 'prop-types'
-import colorStyle from '@/themeStyle/themeStyle.scss'
+import colorStyle from '@/themeStyle/index.scss'
 
 export default class PageHead extends React.Component {
 

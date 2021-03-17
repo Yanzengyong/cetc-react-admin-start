@@ -57,7 +57,8 @@ class InternalTreeNode extends React.Component {
   // 切换器的渲染
   renderSwitcher = () => {
 		const { expanded, level } = this.props
-		// console.log(this.props)
+
+		console.log(level)
 
 		if (this.hasChildren()) {
 			// 注释部分实现的功能：第一级为文件icon，第二级以后为箭头

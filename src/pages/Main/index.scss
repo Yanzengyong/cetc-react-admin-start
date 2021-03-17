@@ -1,299 +1,175 @@
-.main_page_container {
+/*** Fonts ***/
+@import url('https://fonts.googleapis.com/css?family=Bangers');
+
+.react_admin_template_main {
 	width: 100%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	overflow: auto;
-
-	.main_page_title_bar {
-		width: 100%;
-		height: 193px;
-		background-color: white;
-		margin-top: 2px;
-		.main_page_title {
-			font-size: 20px;
-			font-weight: 500;
-			color: #262626;
-			line-height: 28px;
-			padding: 32px 0 24px 32px;
-		}
-
-		.main_page_data_section {
-			width: 100%;
-			display: flex;
-			justify-content: flex-start;
-			align-items: center;
-			flex-wrap: wrap;
-			padding-left: 88px;
-			.count_data_display_box {
-				margin-right: 148px;
-				.count_Data_display_title {
-					font-size: 18px;
-					font-weight: 500;
-					color: #595959;
-					line-height: 25px;
-					display: flex;
-					align-items: center;
-				}
-				.count_data {
-					padding-left: 28px;
-					box-sizing: border-box;
-					color: #262626;
-					.count_data_num {
-						font-size: 48px;
-						font-weight: 700;
-						line-height: 58px;
-					}
-					.count_data_unit {
-						font-size: 14px;
-						font-weight: 400;
-						line-height: 20px;
-					}
-				}
-			}
-		}
-	}
-
-	.main_page_first_box{
-		width: 100%;
-		padding: 24px;
-		box-sizing: border-box;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		.main_page_charts_ItemBox{
-			flex: 1;
-		}
-	}
-
-	.main_page_second_box{
-		width: 100%;
-		padding: 0 24px 24px 24px;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		&:first-child {
-			padding-top: 0;
-		}
-		.main_page_table_box{
-			flex: 2.4;
-		}
-		.main_page_charts_ItemBox2{
-			flex: 1;
-		}
-		.rankColsTitle{
-			width: 100%;
-			text-align: center;
-			font-size: 14px;
-			font-weight: 500;
-			color: #262626;
-			line-height: 20px;
-		}
-		.rankColsContent{
-			width: 100%;
-			text-align: center;
-			font-size: 14px;
-			font-weight: 400;
-			color: #262626;
-			word-break: keep-all;
-			white-space: nowrap;
-			overflow: hidden;
-			text-overflow: ellipsis;
-		}
-	}
-
-	.main_page_third_box {
-		width: 100%;
-		padding: 0 24px 24px 24px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		.tabTable_box{
-			margin-top: 17px;
-			position: relative;
-			.rankColsTitle{
-				width: 100%;
-				text-align: center;
-				font-size: 14px;
-				font-weight: 500;
-				color: #262626;
-				line-height: 20px;
-			}
-			.tabTable_box_selection{
-				position: absolute;
-				right: 0;
-				top: -34px;
-				display: flex;
-				align-items: center;
-				justify-content: flex-start;
-				span{
-					display: flex;
-					font-size: 14px;
-					color: #595959;
-					cursor: pointer;
-					line-height: 22px;
-				}
-				.active{
-					color: #4679FF;
-					font-weight: 600;
-				}
-				b{
-					display: flex;
-					width: 1px;
-					height: 20px;
-					background-color: #D9D9D9;
-					margin: 0 10px;
-				}
-			}
-			.rankColsContent{
-				width: 100%;
-				text-align: center;
-				font-size: 14px;
-				font-weight: 400;
-				color: #262626;
-				word-break: keep-all;
-				white-space: nowrap;
-				overflow: hidden;
-				text-overflow: ellipsis;
-			}
-		}
-	}
-
-	.main_page_charts_box{
-		width: 100%;
-		background-color: white;
-		border-radius: 2px;
-		.main_page_chart_title{
-			width: 100%;
-			height: 56px;
-			font-size: 16px;
-			font-weight: 500;
-			color: #262626;
-			line-height: 24px;
-			display: flex;
-			align-items: center;
-			justify-content: flex-start;
-			padding: 0 32px;
-			box-sizing: border-box;
-			border-bottom: 1px solid #e9e9e9;
-		}
-		.resources_charts {
-			width: 100%;
-			height: 311px;
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			padding: 24px;
-			box-sizing: border-box;
-			.charts_pie{
-				flex: 1;
-				height: 100%;
-			}
-			.charts_line{
-				flex: 2;
-				height: 100%;
-			}
-		}
-		.resources_table{
-			width: 100%;
-			height: 311px;
-			display: flex;
-			align-items: flex-start;
-			justify-content: center;
-			padding: 24px;
-			box-sizing: border-box;
-			.rankColsTitle{
-				width: 100%;
-				text-align: center;
-				font-size: 14px;
-				font-weight: 500;
-				color: #262626;
-				line-height: 20px;
-			}
-		}
-		.resources_table_big{
-			width: 100%;
-			padding: 24px;
-			box-sizing: border-box;
-			.next-tabs-content {
-				overflow: inherit;
-			}
-		}
-	}
-
-	.main_page_charts{
-		margin-top: 20px;
-		width: 100%;
-		height: 350px;
-		background-color: white;
-
-		.main_page_chart_title {
-			width: 100%;
-			height: 64px;
-			font-size: 20px;
-			padding-left: 20px;
-			display: flex;
-			align-items: center;
-			border-bottom: 1px solid #e9e9e9;
-		}
-	}
-
-	.resources_charts {
-		width: 100%;
-		height: calc(100% - 64px);
-		display: flex;
-		justify-content: space-around;
-		.main_charts_nodata{
-			width: 100%;
-			height: 100%;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			font-size: 20px;
-			font-weight: 500;
-			color: #9c9c9c;
-			background-color: #f3f3f3;
-		}
-	}
-
-	.main_page_warning_tabs {
-		width: 100%;
-		height: calc(100% - 525px);
-		margin-top: 20px;
-		background-color: white;
-		padding: 20px;
-	}
-}
-
-.dashboard_chart {
-	width: 30%;
 	height: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	padding-bottom: 20px;
+	position: relative;
+	padding: 24px;
+}
 
-	.dashboard_chart_diagram {
-		// background-color: pink;
-		width: 100%;
-		height: calc(100% - 30px);
+.container {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-auto-rows: 1fr;
+	grid-gap: 1em;
+	width: 100%;
+	height: 100%;
+}
+
+.item {
+	display: inline-block;
+	min-height: 400px;
+	width: 50%;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+/*** Images With Color Fallbacks ***/
+.item:nth-child(1) {
+	background-color: #e74c3c;
+	background-image: url(https://i.pinimg.com/originals/e1/12/f8/e112f875d7f05db887f3d7750474fb1a.jpg);
+	background-position: center top;
+}
+
+.item:nth-child(2) {
+	background-color: #3498db;
+	background-image: url(https://static.comicvine.com/uploads/original/8/80103/4528554-amazing_spider-man_vol_3_19.1_ponsor_variant_textless.jpg);
+	background-position: center 35%;
+}
+
+.item:nth-child(3) {
+	background-color: #bdc3c7;
+	background-image: url(http://www.writeups.org/wp-content/uploads/Black-Panther-Avengers-Marvel-Comics-h427.jpg);
+	background-position: center 20%;
+}
+
+.item:nth-child(4) {
+	background-color: #2c3e50;
+	background-image: url(http://designrfix.com/wp-content/uploads/2010/05/The-incredible-hulk-art-12.jpg);
+}
+
+.item:nth-child(5) {
+	background-color: #2c3e50;
+	// background-image: url(http://image.noelshack.com/fichiers/2018/46/1/1542053976-stanleefol5.png);
+	background-position: center 20px;
+}
+
+.item:nth-child(6) {
+	background-color: #27ae60;
+	background-image: url(http://cdn.collider.com/wp-content/uploads/2015/01/fantastic-four-comic-2.jpg);
+	background-position: 50% 25%;
+}
+
+.item:nth-child(7) {
+	background-color: #f1c40f;
+	background-image: url(https://nerdeux.files.wordpress.com/2011/09/rogues-thor-01.jpg);
+	background-position: left 27%;
+}
+
+.item:nth-child(8) {
+	background-color: #2980b9;
+	background-image: url(https://2.bp.blogspot.com/-YSoMZR-S8CU/VRhKBl7HsZI/AAAAAAAAQqs/_s8iKmBMCUs/s1600/x-men-1-cover.jpg);
+	background-position: center 22%;
+}
+
+/*** Grid Set Up ***/
+@supports (display:grid) {
+	.item {
+		width: auto;
+		min-height: 0;
 	}
 
-	.dashboard_chart_title {
-		font-size: 14px;
-		.dashboard_chart_title_num {
-			font-size: 32px;
-			font-weight: 700;
-			margin-right: 2px;
-		}
+	.item:nth-child(1) {
+		grid-column: 1 / span 1;
+		grid-row: 1 / 20;
+		-webkit-clip-path: polygon(0 0, 80% 0, 100% 76.5%, 0 100%);
+		clip-path: polygon(0 0, 80% 0, 100% 76.5%, 0 100%);
+		margin-bottom: -93px;
+	}
+
+	.item:nth-child(2) {
+		grid-column: 2 / span 1;
+		grid-row: 1 / 20;
+		-webkit-clip-path: polygon(0 0, 100% 0, 75% 80%, 15.5% 100%);
+		clip-path: polygon(0 0, 100% 0, 75% 80%, 15.5% 100%);
+		margin-left: -21%;
+		margin-right: -5%;
+	}
+
+	.item:nth-child(3) {
+		grid-column: 3 / span 1;
+		grid-row: 1 / 20;
+		-webkit-clip-path: polygon(25% 0, 100% 0, 100% 100%, 0 53%);
+		clip-path: polygon(25% 0, 100% 0, 100% 100%, 0 53%);
+		margin-left: -28%;
+		margin-bottom: -150px;
+	}
+
+	.item:nth-child(4) {
+		grid-column: 1 / span 1;
+		grid-row: 20 / 40;
+		-webkit-clip-path: polygon(0 22.5%, 100% 0, 100% 77.5%, 0 100%);
+		clip-path: polygon(0 22.5%, 100% 0, 100% 77.5%, 0 100%);
+		margin-top: -5px;
+		margin-bottom: -93px;
+	}
+
+	.item:nth-child(5) {
+		grid-column: 2 / span 1;
+		grid-row: 20 / 40;
+		-webkit-clip-path: polygon(0 13%, 74% 0, 100% 9.25%, 100% 100%, 0 100%);
+		clip-path: polygon(0 13%, 74% 0, 100% 9.25%, 100% 82%, 65% 100%, 0 82%);
+		margin-top: -67px;
+		margin-left: -1%;
+		margin-bottom: -86px;
+	}
+
+	.item:nth-child(6) {
+		grid-column: 3 / span 1;
+		grid-row: 20 / 40;
+		-webkit-clip-path: polygon(0 0, 100% 34.5%, 100% 100%, 0 68.5%);
+		clip-path: polygon(0 0, 100% 34.5%, 100% 100%, 0 68.5%);
+		margin-left: -1%;
+		margin-top: -20px;
+		margin-bottom: -150px;
+	}
+
+	.item:nth-child(7) {
+		grid-column: 1 / 3;
+		grid-row: 40 / 60;
+		-webkit-clip-path: polygon(0 30%, 49% 0, 75% 38%, 34% 100%, 0 100%);
+		clip-path: polygon(0 30%, 49% 0, 82% 27%, 34% 100%, 0 100%);
+		margin-top: -7px;
+	}
+
+	.item:nth-child(8) {
+		grid-column: 2 / span 2;
+		grid-row: 40 / 60;
+		-webkit-clip-path: polygon(0 100%, 57% 0, 100% 48%, 100% 100%, 0 100%);
+		clip-path: polygon(0 100%, 57% 0, 100% 48%, 100% 100%, 0 100%);
+		margin-left: -15%;
+		margin-top: -7px;
 	}
 }
 
-.alert_dot {
-	width: 8px;
-	height: 8px;
-	background-color: red;
-	border-radius: 50%;
-	margin-right: 8px;
+/*** Floating Text ***/
+.text-box {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
+}
+
+.text {
+	display: block;
+	text-align: center;
+	color: whitesmoke;
+	text-shadow: 0px 3px 15px #000;
+	font-family: 'Bangers', cursive;
+	font-size: 8.5vmax;
 }

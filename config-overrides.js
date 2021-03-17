@@ -32,7 +32,7 @@ module.exports = override(
       rule.use.push({
         loader: require.resolve('sass-resources-loader'),
         options: {
-          resources: './src/themeStyle/themeStyle.scss'
+          resources: './src/themeStyle/index.scss'
         }
       });
     }

@@ -3,7 +3,7 @@ import { Form, Upload, Button, Message } from '@alifd/next'
 import IconFont from '@/components/IconFont'
 import PropTypes from 'prop-types' // 类型检查
 import './index.scss'
-import colorStyle from '@/themeStyle/themeStyle.scss'
+import colorStyle from '@/themeStyle/index.scss'
 
 const FormItem = Form.Item
 

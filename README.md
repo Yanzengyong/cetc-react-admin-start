@@ -4,6 +4,8 @@
 
 > 项目构建是基于create-react-app进行构建的，自定义配置使用了config-overrides，详细配置方法可在网上搜索查找；需要注意的是：**项目开发前，务必详细阅读本文档以及[前端开发规范](./specification/index.md)**
 
+![mainpage](/Users/yzy/Desktop/independentSpace/cetc-admin-template/specification/mainpage.png)
+
 ## 项目启动
 
 ```sh
@@ -76,6 +78,35 @@ npm run build
   ```
 
 ---
+
+### themeStyle样式的使用
+
+* src/themeStyle/index.scss设置主题变量
+
+* 在.scss文件中可以直接使用变量，无需引入
+
+  ```css
+  .btn_style {
+    display: flex;
+    color: $btn_disable_color;
+  }
+  ```
+
+  
+
+* 在.js文件中需要引入后使用
+
+  ```jsx
+  import colorStyle from '@/themeStyle/index.scss'
+  
+  const Test = () => {
+    return (
+      <Button style={{ color: colorStyle.btn_disable_color }} >按钮</Button>
+    )
+  }
+  ```
+
+  
 
 ## 路由篇
 

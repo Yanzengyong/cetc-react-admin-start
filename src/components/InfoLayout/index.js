@@ -8,7 +8,7 @@ import React from 'react'
 import InfoHead from '@/components/InfoHead'
 import PropTypes from 'prop-types' // 类型检查
 import './index.scss'
-import colorStyle from '@/themeStyle/themeStyle.scss'
+import colorStyle from '@/themeStyle/index.scss'
 
 export default class InfoLayout extends React.Component {
   state = {
