@@ -175,6 +175,97 @@ npm run build
 
 ## 工具类篇
 
+* src/utils/asyncComponent.js
+
+  * 按需加载组件功能
+
+* src/utils/common.js
+
+  * getCurrentPageFromLocation：获取会话存储中的currentPage-pathname的页码，接收一个props参数
+
+  * validateAndRemoveStorage：验证是否是关闭了tab，关闭了就删除该路由中存储的currentpage
+
+  * storageCurrentPage：存储当前页面的currentpage，该方法主要是封装在jumpToPage中使用
+
+  * jumpToPage：跳转页面，分别接受props, routeName, queryParam, closeTab, pageNum参数
+
+    ```jsx
+    // 因为jumpToPage的closeTab参数规则使用到了react-redux，所以若需要用到该规则时，需要为组件绑定connect
+    import { connect } from 'react-redux'
+    import { Tab } from '@/reduxActions'
+    import { jumpToPage } from '@/utils/common'
+    
+    @connect((state) => ({ state: state.tabs }), Tab)
+    class DataSourceEdit extends React.Component {
+      onBack = async () => {
+    		// 路由跳转
+    		jumpToPage(this.props, '首页', null, true)
+    	}
+      render () 
+        return (
+        	<button onclick={this.onBack}>跳转到首页<button>
+        )
+      }
+    }
+    ```
+
+    
+
+  * deleteListItemAction：删除表格或列表中对象的方法，**遇到分页情况时需使用，因为方法里已经处理好了“当前页完全删除：页数返回上一页 + 刷新页面数据”和“当前页不完全删除：页数不变 + 刷新页面数据”的情况**
+
+  * getQueryItemValue：获取url地址query值中某个固定属性值，接收query, attr，返回attr的值
+
+  * isJSON：判断字符串是否为json
+
+  * leaveAndSave：页面离开并且存储当前的页面数据（与hasStorageAndInit搭配使用）
+
+  * hasStorageAndInit：查看当前路由是否存在存储数据，若存在则初始化存储数据（与leaveAndSave搭配使用）
+
+  * getStringSpecialContent：获取字符串中${}内的值
+
+* src/utils/download.js
+
+  * 该文件返回一个方法，接收地址和query值
+
+* src/utils/menuForRoute.js
+
+  * DefaultMenu：默认菜单路由
+  * enhancerMenu：增强menu函数，为menu添加layout字段，为path添加pure或者layout前缀
+  * expendSideMenusHandle：将侧边菜单栏转换为数组数据，每个单位**包含**父元素
+  * instantiationRouteDiv：将所有平台中的侧边菜单转换为数组，每个单位**不包含**父元素
+  * getBreadcrumbData：获取当前地址的面包屑数据
+  * findCurrentRouteItem：根据菜单标题或者菜单地址，获取菜单对象
+
+* src/utils/storage.js
+
+  * PLATFORM_NAME：必须设置，不能为空
+  * setLocalStorageItem：存储信息到localstorage
+  * getLocalStorageItem：获取本地localstorage的信息
+  * removeLocalStorageItem：删除会话sessionStorage中的某个数据
+  * clearLocalStorage：清空本地localstorage的信息（本系统的）
+  * setSessionStorageItem：存储信息到会话存储sessionStorage
+  * getSessionStorageItem：获取会话sessionStorage的信息
+  * removeSessionStorageItem：删除会话sessionStorage中的某个数据
+  * clearSessionStorage：清空会话sessionStorage的信息（本系统的）
+
+* src/utils/validationFn.js
+
+  * NoSpace, //不能输入空格
+  * NoChinese, //不能输入中文
+  * Port, //请输入正确的端口号
+  * IpAddress, // 请输入正确的IP地址
+  * NumEng, //名称只允许数字英文下划线
+  * Eng_, //只允许输入数字下划线
+  * NumChineseEnglish, //只允许输入中文、英文、数字但不包括下划线等符号
+  * Email, //请输入正确的email地址
+  * OnlyCode, //只允许输入字符
+  * Url, //url验证
+  * ZeroToThousand, //1~1000的整数
+  * NegAndPos, //只能包含正负整数
+  * onlyChinese, // 只能输入中文、数字、下划线
+  * NoCommaQuota, // 不可输入英文单双引号、英文逗号
+  * NoNumChinese, //只能输入英文、特殊字符 
+
 ---
 
 ## redux篇

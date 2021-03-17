@@ -63,6 +63,9 @@ const jumpToPage = async (props, routeName, queryParam, closeTab, pageNum) => {
 	queryStr = queryStr.substr(1)
 
 	if (JobPage && JobPage.path) {
+		// 关闭页面
+		const { pathname, search } = props.location
+
 		const path = {
 			pathname: `${JobPage.path}`,
 			search: queryStr
@@ -71,9 +74,6 @@ const jumpToPage = async (props, routeName, queryParam, closeTab, pageNum) => {
 		if (pageNum) storageCurrentPage(props, pageNum)
 
 		props.history.push(path)
-
-		// 关闭页面
-		const { pathname, search } = props.location
 
 		if (closeTab && props.closeItemTab && props.setDeleteTabPath) {
 			await props.setDeleteTabPath([`${pathname}${search}`])
@@ -230,7 +230,9 @@ const isJSON = (str) => {
 }
 
 // 页面离开并且存储当前的页面数据
-const leaveAndSave = (storageName, data) => {
+const leaveAndSave = (props, data) => {
+	const { pathname, search } = props.location
+	const storageName = `${pathname}${search}`
 	setTimeout(() => {
 		const closeTabPathArr = store.getState() && store.getState().tabs && store.getState().tabs.deleteTabPath
 		const isString = typeof data === 'string' ? true : false
@@ -252,13 +254,12 @@ const leaveAndSave = (storageName, data) => {
 }
 
 // 查看当前路由是否存在存储数据，若存在则初始化存储数据
-const hasStorageAndInit = () => {
-	const pathHash = window.location.hash
-	const routePathUrl = pathHash.substring(1)
+const hasStorageAndInit = (props) => {
+	const { pathname, search } = props.location
 
-	const storageData = getSessionStorageItem(routePathUrl)
+	const storageData = getSessionStorageItem(`${pathname}${search}`)
 
-	return storageData && isJSON(storageData) ? JSON.parse(storageData) : storageData
+	return storageData
 }
 
 // 获取字符串中${}内的值
