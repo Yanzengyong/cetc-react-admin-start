@@ -4,6 +4,8 @@ const DefaultMenu = {
 	exact: true,
 	component: 'MainPage',
 }
+// 无layout的路由前缀名
+const purePrefix = 'pure'
 
 // 增强menu（为menu按照原来的格式，给每一个对象中加入layout和path属性）
 const enhancerMenu = (MenuConfig) => {
@@ -14,13 +16,13 @@ const enhancerMenu = (MenuConfig) => {
 				// 现在是主菜单，不需要做什么操作，继续往下进行遍历
 				const defaultLayout = item.layout ?? ''
 				Object.defineProperty(item, 'path', {
-					value: defaultLayout ? `/${defaultLayout}${item.path}` : `/pure${item.path}`,
+					value: defaultLayout ? `/${defaultLayout}${item.path}` : `/${purePrefix}${item.path}`,
 					writable: true,
 					enumerable: true,
 					configurable: true
 				})
 				Object.defineProperty(item, 'defaultPath', {
-					value: defaultLayout ? `/${defaultLayout}${item.defaultPath}` : `/pure${item.defaultPath}`,
+					value: defaultLayout ? `/${defaultLayout}${item.defaultPath}` : `/${purePrefix}${item.defaultPath}`,
 					writable: true,
 					enumerable: true,
 					configurable: true
@@ -35,7 +37,7 @@ const enhancerMenu = (MenuConfig) => {
 					configurable: true
 				})
 				Object.defineProperty(item, 'path', {
-					value: newLayout ? `/${newLayout}${item.path}` : `/pure${item.path}`,
+					value: newLayout ? `/${newLayout}${item.path}` : `/${purePrefix}${item.path}`,
 					writable: true,
 					enumerable: true,
 					configurable: true
@@ -136,6 +138,7 @@ const findCurrentRouteItem = (MenuConfig, path, title) => {
 
 export {
 	DefaultMenu,
+	purePrefix,
 	enhancerMenu,
 	expendSideMenusHandle,
 	instantiationRouteDiv,

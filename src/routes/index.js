@@ -10,7 +10,7 @@ import NotFound from '@/pages/NotFound'
 import MenuConfig from '@/menus'
 import AllPages from '@/pagesConfig'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
-import { instantiationRouteDiv, DefaultMenu } from 'utils/menuForRoute'
+import { instantiationRouteDiv, DefaultMenu, purePrefix } from 'utils/menuForRoute'
 import { getLocalStorageItem } from '@/utils/storage'
 import './trastion.scss'
 
@@ -84,12 +84,13 @@ const AuthRouteComponentHandle = (props) => {
 // 渲染无layout的路由列表
 const RenderPureRoute = (routeList, props) => {
 	return (
-		<Route path='/pure'>
+		<Route path={`/${purePrefix}`}>
 			<TransitionGroup style={{ width: '100%', height: '100%' }}>
 				<CSSTransition
 					key={props.location.pathname}
 					timeout={500}
 					classNames='forward'
+					exit={false}
 				>
 					<Switch>
 						{
@@ -114,6 +115,7 @@ const LayoutRouteComponent = (routeList, props) => {
 					key={props.location.pathname}
 					timeout={500}
 					classNames='forward'
+					exit={false}
 				>
 					<Switch>
 						{

@@ -112,18 +112,20 @@ npm run build
 
 > 路由格式：/平台名称/菜单名称/功能名称 【或】 /平台名称/父级菜单名称/菜单名称/功能名称
 >
-> 注：需要注意的是配置DefaultMenu时，path格式为/pure(或layoutname)/*；但是配置菜单时无需加pure或者layoutname前缀，因为会有enhancerMenu函数帮你自动加上
+> 注：purePrefix的默认值是“pure”（可修改），需要注意的是配置DefaultMenu时，path格式为 /purePrefix/* 或 /layoutname/*；但是配置菜单时无需加purePrefix或者layoutname前缀，因为会有enhancerMenu函数帮你自动加上
+>
+> **特别注意：若使用了路由过渡效果时，必须为** <CSSTransition>**标签加上 exit={false}，若不加路由切换时会导致组件两次渲染**
 
 ### 1.【场景1】项目工程不包含登录（login）页面，用户从其他地方跳转到该项目（页面）；
 
-* 配置默认路由，打开“src/utils/menuForRoute.js”，配置DefaultMenu对象，**path属性为访问地址是“/”时重定向的新地址（注：路由地址必须是“/pure”或者“/layoutname”作为开头，pure为无layout的页面，layoutname为当前页面使用的layout名称）**；
+* 配置默认路由，打开“src/utils/menuForRoute.js”，配置DefaultMenu对象，**path属性为访问地址是“/”时重定向的新地址（注：路由地址必须是“/purePrefix”或者“/layoutname”作为开头，purePrefix为无layout的页面路由前缀名（默认值为‘pure’），layoutname为有layout的页面路由前缀名【与layout组件名称一致】）**；
 * 关于路由权限的配置，可根据实际后端返回的数据情况修改src/routes/index.js中AuthRouteComponentHandle函数的role判断；
 
 ---
 
 ### 2.【场景2】项目工程包含登录（login）页面，用户需在项目中的登陆页登陆后才可以访问其他页面；
 
-* 配置默认路由，打开“src/utils/menuForRoute.js”，配置DefaultMenu对象，**path属性为访问地址是“/”时重定向的新地址（注：路由地址必须是“/pure”或者“/layoutname”作为开头，pure为无layout的页面，layoutname为当前页面使用的layout名称）**；
+* 配置默认路由，打开“src/utils/menuForRoute.js”，配置DefaultMenu对象，**path属性为访问地址是“/”时重定向的新地址（注：路由地址必须是“/purePrefix”或者“/layoutname”作为开头，purePrefix为无layout的页面路由前缀名（默认值为‘pure’），layoutname为有layout的页面路由前缀名【与layout组件名称一致】）**；
 
 * 关于路由权限的配置，可根据实际后端返回的数据情况修改src/routes/index.js中AuthRouteComponentHandle函数的role判断；
 
@@ -406,6 +408,8 @@ getInfo = async () => {
 ```
 
 ---
+
+## Tab页签篇
 
 ### 关于Tab栏的注意事项
 

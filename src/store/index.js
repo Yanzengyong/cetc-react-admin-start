@@ -1,11 +1,3 @@
-/*
- * @Descripttion:
- * @version:
- * @Author: Yanzengyong
- * @Date: 2020-08-17 09:06:45
- * @LastEditors: Yanzengyong
- * @LastEditTime: 2020-08-30 23:00:21
- */
 // 注册store
 import { createStore, applyMiddleware } from 'redux'
 // import thunk from 'redux-thunk'

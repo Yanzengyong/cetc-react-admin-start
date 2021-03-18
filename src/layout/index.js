@@ -317,7 +317,6 @@ class Layout extends React.Component {
 	// 渲染侧边菜单的函数
 	renderNavHandle = (menu) =>
 		menu.map((menuItem) => {
-			console.log(menuItem)
 			const UserInfo = getLocalStorageItem('UserInfo') ?? {}
 
 			// 复用逻辑
@@ -628,7 +627,6 @@ class Layout extends React.Component {
 						selectedKeys={sideNavSelectedKeys}
 						onSelect={this.sideNavSelect}
 						openKeys={sideNavOpenKeys}
-
 						onOpen={this.sideNavOpen}
 					>
 						{this.renderNavHandle(sideMenu)}

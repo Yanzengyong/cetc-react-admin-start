@@ -10,6 +10,7 @@ import './index.scss'
 import moment from 'moment'
 
 export default class Main extends React.Component {
+
 	render () {
 		return (
 			<div className='react_admin_template_main'>
