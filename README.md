@@ -23,14 +23,9 @@
   # name表示工程名称（即文件夹名称）
   cetcgx init <name> 
 
-  # 执行成功后,进入文件夹，然后执行启动命令
+  # 执行成功后,进入文件夹
   cd <name>
 
-  yarn start
-
-  # or
-
-  npm install
 ```
 
 ## 克隆模版
