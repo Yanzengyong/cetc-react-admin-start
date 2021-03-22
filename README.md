@@ -6,7 +6,7 @@
 
 ![mainpage](/Users/yzy/Desktop/independentSpace/cetc-admin-template/specification/mainpage.png)
 
-## cli工具使用
+## 使用cli工具创建模版【推荐】（模版会持续维护，使用cli可以更便捷的获取最新模版）
 
 第一步
 
@@ -31,6 +31,14 @@
   # or
 
   npm install
+```
+
+## 克隆模版
+
+```sh
+
+git clone https://github.com/Yanzengyong/cetc-react-admin-start.git
+
 ```
 
 ## 项目启动
