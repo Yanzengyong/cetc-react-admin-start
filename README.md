@@ -6,6 +6,33 @@
 
 ![mainpage](/Users/yzy/Desktop/independentSpace/cetc-admin-template/specification/mainpage.png)
 
+## cli工具使用
+
+第一步
+
+```sh
+  npm i cetc-react-admin-template-cli -g
+
+  # or
+
+  yarn add cetc-react-admin-template-cli global
+```
+第二步
+
+```sh
+  # name表示工程名称（即文件夹名称）
+  cetcgx init <name> 
+
+  # 执行成功后,进入文件夹，然后执行启动命令
+  cd <name>
+
+  yarn start
+
+  # or
+
+  npm install
+```
+
 ## 项目启动
 
 ```sh
